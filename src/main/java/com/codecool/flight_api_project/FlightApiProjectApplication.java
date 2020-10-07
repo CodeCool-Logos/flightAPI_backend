@@ -19,10 +19,12 @@ public class FlightApiProjectApplication
 
     public static AirportModel airportModel = new AirportModel("Otopeni","OTP","Bucuresti",Arrays.asList(flightModel));
 
-    public static CityModel cityModel = new CityModel("Rome", Arrays.asList(airportModel));
+    public static CityModel cityModel = new CityModel("Rome", Arrays.asList(airportModel), "Italy");
 
     public static void main(String[] args)
     {
+
+
         FlightRepository fr = new FlightRepository();
         fr.insertFlight(flightModel);
         AirportRepository ar =  new AirportRepository();
