@@ -1,6 +1,7 @@
 package com.codecool.flight_api_project.airline;
 
 import com.codecool.flight_api_project.airplane.Airplane;
+import com.codecool.flight_api_project.flight.Flight;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,11 +22,23 @@ public class Airline
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+
     private String name;
 
-    @OneToMany(fetch = FetchType.EAGER,
+    @OneToMany(
+//            fetch = FetchType.EAGER,
                 cascade = CascadeType.ALL,
                 orphanRemoval = true,
                 mappedBy = "airline")
     private List<Airplane> airplaneList =  new ArrayList<>();
+
+
+//    @OneToMany(
+//            fetch = FetchType.EAGER,
+//            cascade = CascadeType.ALL,
+//            orphanRemoval = true,
+//            mappedBy = "airline"
+//    )
+//    private List<Flight> flights = new ArrayList<>();
 }

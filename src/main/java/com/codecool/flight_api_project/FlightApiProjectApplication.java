@@ -17,6 +17,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.context.ConfigurableApplicationContext;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -31,43 +32,77 @@ public class FlightApiProjectApplication{
         ConfigurableApplicationContext configurableApplicationContext =
                 SpringApplication.run(FlightApiProjectApplication.class, args);
 
-        FlightRepository flightRepository= configurableApplicationContext.getBean(FlightRepository.class);
-        AirportRepository airportRepository = configurableApplicationContext.getBean(AirportRepository.class);
-        AirlineRepository airlineRepository = configurableApplicationContext.getBean(AirlineRepository.class);
-        CityRepository cityRepository = configurableApplicationContext.getBean(CityRepository.class);
         AirplaneRepository airplaneRepository = configurableApplicationContext.getBean(AirplaneRepository.class);
+        AirportRepository airportRepository = configurableApplicationContext.getBean(AirportRepository.class);
+        CityRepository cityRepository = configurableApplicationContext.getBean(CityRepository.class);
+        AirlineRepository airlineRepository = configurableApplicationContext.getBean(AirlineRepository.class);
+        FlightRepository flightRepository= configurableApplicationContext.getBean(FlightRepository.class);
 
-        // Create airports
-        Airport otopeni = Airport.builder().airportIataCode("OTP").airportName("Henri Coanda International Airport").build();
-        Airport heathrow = Airport.builder().airportIataCode("LHR").airportName("London Heathrow Airport").build();
-        Airport charlesDeGaulle = Airport.builder().airportIataCode("CDG").airportName("Charles de Gaulle International Airport").build();
-        Airport traianVuia = Airport.builder().airportIataCode("TSR").airportName("Timisoara Traian Vuia Airport").build();
+
+
+
 
         // Create cities
-        City bucuresti = City.builder().cityIataCode("BUC").cityName("Bucuresti").airportList(Arrays.asList(otopeni)).build();
-        City london = City.builder().cityIataCode("LDN").cityName("London").airportList(Arrays.asList(heathrow)).build();
-        City paris = City.builder().cityIataCode("PRS").cityName("Paris").airportList(Arrays.asList(charlesDeGaulle)).build();
-        City timisoara = City.builder().cityIataCode("TMS").cityName("Timisoara").airportList(Arrays.asList(traianVuia)).build();
+        City bucuresti = City.builder().cityName("Bucuresti").build();
+        City london = City.builder().cityName("London").build();
+        City paris = City.builder().cityName("Paris").build();
+        City timisoara = City.builder().cityName("Timisoara").build();
 
-        //Create airplanes
-        Airplane b373 = Airplane.builder().manufacturer("Boeing").model("B373").numberOfSeats((long) 160).speed(800).build();
-        Airplane b737 = Airplane.builder().manufacturer("Boeing").model("B737").numberOfSeats((long) 180).speed(700).build();
-        Airplane b747 = Airplane.builder().manufacturer("Boeing").model("B747").numberOfSeats((long) 200).speed(900).build();
-        Airplane b777 = Airplane.builder().manufacturer("Boeing").model("B777").numberOfSeats((long) 190).speed(750).build();
-        Airplane a320 = Airplane.builder().manufacturer("Airbus").model("A320").numberOfSeats((long) 150).speed(800).build();
-        Airplane a300 = Airplane.builder().manufacturer("Airbus").model("A300").numberOfSeats((long) 160).speed(800).build();
-        Airplane a340 = Airplane.builder().manufacturer("Airbus").model("A340").numberOfSeats((long) 180).speed(900).build();
+//         Create airports
+        Airport otopeni = Airport.builder().airportName("Henri Coanda International Airport").city(bucuresti).build();
+        Airport heathrow = Airport.builder().airportName("London Heathrow Airport").city(london).build();
+        Airport charlesDeGaulle = Airport.builder().airportName("Charles de Gaulle International Airport").city(paris).build();
+        Airport traianVuia = Airport.builder().airportName("Timisoara Traian Vuia Airport").city(timisoara).build();
+
+
+
+//        City bucuresti = new City("Buc");
+//        City ldn = new City("Buc");
+//        City prs = new City("Buc");
+//        City tms = new City("Buc");
+//
+//        Airport otopeni = new Airport("Otopeni", bucuresti);
+//        Airport heathrow = new Airport("Heat", ldn);
+//        Airport charlesDeGaulle = new Airport("Char",prs);
+//        Airport traianVuia = new Airport("Tra Vuia",tms);
+
+//        List<Airplane> airplaneListTarom = Arrays.asList(b737,a300,b373);
+//        List<Airplane> airplaneListB = Arrays.asList(b373,a320,b373);
+//        List<Airplane> airplaneListF= Arrays.asList(b747,a300,b373);
+//        List<Airplane> airplaneListW = Arrays.asList(b737,a340,b373);
+
 
         //Create airlines
-        Airline tarom = Airline.builder().name("Tarom").airplaneList(Arrays.asList(b737, a320, a300)).build();
-        Airline britishAirways = Airline.builder().name("British Airways").airplaneList(Arrays.asList(b373, b747, a300)).build();
-        Airline airFrance = Airline.builder().name("Air France").airplaneList(Arrays.asList(b777, b747, a300)).build();
-        Airline wizzAir = Airline.builder().name("Wizz Air").airplaneList(Arrays.asList(b747, a320, a340)).build();
+        Airline tarom = Airline.builder().name("Tarom").build();
+        Airline britishAirways = Airline.builder().name("British Airways").build();
+        Airline airFrance = Airline.builder().name("Air France").build();
+        Airline wizzAir = Airline.builder().name("Wizz Air")
+//                airplaneList(airplaneListW)
+                .build();
+
+        //Create airplanes
+        Airplane b373 = Airplane.builder().manufacturer("Boeing").model("B373")
+                .numberOfSeats((long) 160).speed(800).airline(tarom).build();
+        Airplane b737 = Airplane.builder().manufacturer("Boeing").airline(airFrance).model("B737")
+                .numberOfSeats((long) 180).speed(700).build();
+        Airplane b747 = Airplane.builder().manufacturer("Boeing").airline(britishAirways).model("B747")
+                .numberOfSeats((long) 200).speed(900).build();
+        Airplane b777 = Airplane.builder().manufacturer("Boeing").model("B777")
+                .numberOfSeats((long) 190).speed(750).airline(wizzAir).build();
+        Airplane a320 = Airplane.builder().manufacturer("Airbus").model("A320")
+                .numberOfSeats((long) 150).speed(800).airline(tarom).build();
+        Airplane a300 = Airplane.builder().manufacturer("Airbus").model("A300")
+                .numberOfSeats((long) 160).speed(800).airline(britishAirways).build();
+        Airplane a340 = Airplane.builder().manufacturer("Airbus").model("A340")
+                .numberOfSeats((long) 180).speed(900).airline(airFrance).build();
+
+
+
 
 
         Flight flightOtoHeat = Flight.builder().date(LocalDate.of(2020, 11, 1))
                 .price((long) 30).departureTime(LocalTime.of(6, 30)).arrivalTime(LocalTime.of(9, 30))
-                .departureAirport(otopeni).arrivalAirport(heathrow).airline(wizzAir).build();
+                .departureAirport(otopeni).arrivalAirport(heathrow).airline(tarom).build();
 
         Flight flightOtoHeat2 = Flight.builder().date(LocalDate.of(2020, 11, 1))
                 .price((long) 35).departureTime(LocalTime.of(8, 30)).arrivalTime(LocalTime.of(11, 30))
@@ -79,24 +114,37 @@ public class FlightApiProjectApplication{
 
         Flight flightTimHeat = Flight.builder().date(LocalDate.of(2020, 11, 1))
                 .price((long) 80).departureTime(LocalTime.of(3, 30)).arrivalTime(LocalTime.of(6, 00))
-                .departureAirport(traianVuia).arrivalAirport(heathrow).airline(britishAirways).build();
+                .departureAirport(traianVuia).arrivalAirport(heathrow).airline(tarom).build();
 
         Flight flightOtoTim = Flight.builder().date(LocalDate.of(2020, 11, 1))
                 .price((long) 60).departureTime(LocalTime.of(13, 00)).arrivalTime(LocalTime.of(14, 00))
-                .departureAirport(otopeni).arrivalAirport(traianVuia).airline(tarom).build();
+                .departureAirport(otopeni).arrivalAirport(traianVuia).airline(wizzAir).build();
 
+
+
+
+
+
+
+
+
+
+
+        cityRepository.save(bucuresti);
+        cityRepository.save(paris);
+        cityRepository.save(london);
+        cityRepository.save(timisoara);
 
         airportRepository.save(otopeni);
         airportRepository.save(heathrow);
         airportRepository.save(charlesDeGaulle);
         airportRepository.save(traianVuia);
 
-        flightRepository.save(flightOtoHeat);
-        flightRepository.save(flightOtoHeat2);
-        flightRepository.save(flightOtoPar);
-        flightRepository.save(flightTimHeat);
-        flightRepository.save(flightOtoTim);
-//
+        airlineRepository.save(tarom);
+        airlineRepository.save(britishAirways);
+        airlineRepository.save(airFrance);
+        airlineRepository.save(wizzAir);
+
         airplaneRepository.save(b373);
         airplaneRepository.save(b737);
         airplaneRepository.save(b747);
@@ -104,16 +152,19 @@ public class FlightApiProjectApplication{
         airplaneRepository.save(a320);
         airplaneRepository.save(a300);
         airplaneRepository.save(a340);
-//
-//        airlineRepository.save(tarom);
-//        airlineRepository.save(britishAirways);
-//        airlineRepository.save(airFrance);
-//        airlineRepository.save(wizzAir);
 
-        cityRepository.save(bucuresti);
-        cityRepository.save(paris);
-        cityRepository.save(london);
-        cityRepository.save(timisoara);
+
+
+        flightRepository.save(flightOtoHeat);
+        flightRepository.save(flightOtoHeat2);
+        flightRepository.save(flightOtoPar);
+        flightRepository.save(flightTimHeat);
+        flightRepository.save(flightOtoTim);
+
+
+
+
+
     }
 
 }

@@ -40,11 +40,4 @@ public class Flight
     @JoinColumn(name = "airline_id")
     private Airline airline;
 
-
-
-
-
-
-
-
 }
