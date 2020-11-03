@@ -1,6 +1,5 @@
 package com.codecool.flight_api_project.user;
 
-import com.codecool.flight_api_project.flight.FlightModel;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Repository;

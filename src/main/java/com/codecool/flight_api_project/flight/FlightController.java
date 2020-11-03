@@ -21,19 +21,19 @@ public class FlightController
     }
 
     @GetMapping
-    public List<FlightModel> allFlights(){
+    public List<Flight> allFlights(){
         return flightService.allFlights();
     }
 
 
     @GetMapping("{from}/{to}/{date}")
-    public List<FlightModel> allFlights(@PathVariable String from, @PathVariable String to, @PathVariable("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date){
+    public List<Flight> allFlights(@PathVariable String from, @PathVariable String to, @PathVariable("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date){
         return flightService.searchFlight(from, to, date);
     }
 
     @PostMapping
-    public void addFLight(@RequestBody FlightModel flightModel)
+    public void addFLight(@RequestBody Flight flight)
     {
-        flightService.addFlight(flightModel);
+        flightService.addFlight(flight);
     }
 }

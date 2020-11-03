@@ -13,24 +13,24 @@ public class CityRepository implements CityDAO{
 
     public CityRepository(){};
 
-    private static List<CityModel> DB = new ArrayList<>();
+    private static List<City> DB = new ArrayList<>();
 
 
     public void populatedCitiesList() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         DB = objectMapper.readValue(
                 new File("src/main/resources/cities.json"),
-                new TypeReference<List<CityModel>>(){});
+                new TypeReference<List<City>>(){});
     }
 
 
-    public void insertCity(CityModel city) {
+    public void insertCity(City city) {
         DB.add(city);
     }
 
 
     @Override
-    public List<CityModel> selectAllCities() {
+    public List<City> selectAllCities() {
         return DB;
     }
 }

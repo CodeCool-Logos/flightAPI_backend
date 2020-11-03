@@ -1,22 +1,28 @@
 package com.codecool.flight_api_project.airplane;
 
-public class AirplaneModel {
+import javax.persistence.*;
 
+@Entity
+@Table(name="Airplane")
+public class Airplane
+{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String manufacturer;
     private String model;
     private int numberOfSeats;
     private double speed;
 
-    public AirplaneModel(int id, String manufacturer, String model, int numberOfSeats, double speed) {
-        this.id = id;
+    public Airplane(String manufacturer, String model, int numberOfSeats, double speed) {
         this.manufacturer = manufacturer;
         this.model = model;
         this.numberOfSeats = numberOfSeats;
         this.speed = speed;
     }
 
-    public AirplaneModel() {
+    public Airplane() {
     }
 
     public int getId() {

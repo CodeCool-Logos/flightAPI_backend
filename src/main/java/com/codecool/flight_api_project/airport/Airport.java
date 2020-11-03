@@ -1,21 +1,21 @@
 package com.codecool.flight_api_project.airport;
 
-import com.codecool.flight_api_project.flight.FlightModel;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-import java.util.ArrayList;
-import java.util.List;
-
+@Entity
+@Table(name="Airport")
 public class Airport {
 
+    @Id
     private String airportIataCode;
     private String airportName;
-    private List<Integer> airlinesID;
 
 
-    public Airport(String airportIataCode, String airportName, List<Integer> airlinesID) {
+    public Airport(String airportIataCode, String airportName) {
         this.airportIataCode = airportIataCode;
         this.airportName = airportName;
-        this.airlinesID = airlinesID;
     }
 
     public Airport() {
@@ -29,16 +29,12 @@ public class Airport {
         return airportName;
     }
 
-    public List<Integer> getAirlinesID() {
-        return airlinesID;
-    }
-
     @Override
-    public String toString() {
-        final StringBuffer sb = new StringBuffer("AirportModel{");
-        sb.append("airportIataCode='").append(airportIataCode).append('\'');
-        sb.append(", airportName='").append(airportName).append('\'');
-        sb.append('}');
-        return sb.toString();
+    public String toString()
+    {
+        return "Airport{" +
+                "airportIataCode='" + airportIataCode + '\'' +
+                ", airportName='" + airportName + '\'' +
+                '}';
     }
 }

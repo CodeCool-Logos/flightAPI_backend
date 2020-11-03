@@ -20,13 +20,13 @@ public class CityController {
     }
 
     @GetMapping
-    public List<CityModel> allCities(){
+    public List<City> allCities(){
         return cityService.allCities();
     }
 
     @PostMapping
-    public void addCity(@RequestBody CityModel cityModel)
+    public void addCity(@RequestBody City city)
     {
-        cityService.addCity(cityModel);
+        cityService.addCity(city);
     }
 }

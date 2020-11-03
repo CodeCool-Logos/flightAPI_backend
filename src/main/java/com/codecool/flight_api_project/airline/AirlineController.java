@@ -18,13 +18,13 @@ public class AirlineController {
 
 
     @GetMapping
-    public List<AirlineModel> allAirline(){
+    public List<Airline> allAirline(){
         return airlineService.allAirlines();
     }
 
     @PostMapping
-    public void addAirline(AirlineModel airlineModel){
-        airlineService.addAirline(airlineModel);
+    public void addAirline(Airline airline){
+        airlineService.addAirline(airline);
     }
 
 }

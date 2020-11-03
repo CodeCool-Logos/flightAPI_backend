@@ -1,7 +1,6 @@
 package com.codecool.flight_api_project.airline;
 
 
-import com.codecool.flight_api_project.city.CityModel;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Repository;
@@ -14,7 +13,7 @@ import java.util.List;
 @Repository
 public class AirlineRepository implements AirlineDao{
 
-    private static List<AirlineModel> DB = new ArrayList<>();
+    private static List<Airline> DB = new ArrayList<>();
 
 
     public void populatedAirlinesList() throws IOException
@@ -22,18 +21,18 @@ public class AirlineRepository implements AirlineDao{
         ObjectMapper objectMapper = new ObjectMapper();
         DB = objectMapper.readValue(
                 new File("src/main/resources/airlines.json"),
-                new TypeReference<List<AirlineModel>>(){});
+                new TypeReference<List<Airline>>(){});
     }
 
 
 
-    public void insertAirline(AirlineModel airlineModel){
-        DB.add(airlineModel);
+    public void insertAirline(Airline airline){
+        DB.add(airline);
     }
 
 
     @Override
-    public List<AirlineModel> selectAllAirline() {
+    public List<Airline> selectAllAirline() {
         return DB;
     }
 }

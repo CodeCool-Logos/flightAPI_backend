@@ -1,23 +1,26 @@
 package com.codecool.flight_api_project.airline;
 
-import java.util.List;
+import javax.persistence.*;
 
-public class AirlineModel {
+@Entity
+@Table(name="Airline")
+public class Airline
+{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
-    private List<Integer> airplaneId;
 
 
 
-    public AirlineModel(int id, String name, List<Integer> airplaneId)
+
+    public Airline(String name)
     {
-        this.id = id;
         this.name = name;
-        this.airplaneId = airplaneId;
-
     }
 
-    public AirlineModel()
+    public Airline()
     {
     }
 
@@ -31,20 +34,12 @@ public class AirlineModel {
         return name;
     }
 
-    public List<Integer> getAirplaneId()
-    {
-        return airplaneId;
-    }
-
-
-
     @Override
     public String toString()
     {
         return "AirlineModel{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", airplaneId=" + airplaneId +
                 '}';
     }
 }

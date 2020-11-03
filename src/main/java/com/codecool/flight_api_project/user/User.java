@@ -1,7 +1,5 @@
 package com.codecool.flight_api_project.user;
 
-
-
 public class User {
     private Long id;
     private String name;
