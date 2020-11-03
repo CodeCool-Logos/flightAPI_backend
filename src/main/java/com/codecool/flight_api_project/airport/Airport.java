@@ -1,40 +1,31 @@
 package com.codecool.flight_api_project.airport;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.codecool.flight_api_project.city.City;
+import com.codecool.flight_api_project.flight.Flight;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name="Airport")
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Builder
 public class Airport {
 
     @Id
     private String airportIataCode;
     private String airportName;
 
+    @ManyToOne
+    @JoinColumn(name = "city_id")
+    private City city;
 
-    public Airport(String airportIataCode, String airportName) {
-        this.airportIataCode = airportIataCode;
-        this.airportName = airportName;
-    }
 
-    public Airport() {
-    }
 
-    public String getAirportIataCode() {
-        return airportIataCode;
-    }
 
-    public String getAirportName() {
-        return airportName;
-    }
-
-    @Override
-    public String toString()
-    {
-        return "Airport{" +
-                "airportIataCode='" + airportIataCode + '\'' +
-                ", airportName='" + airportName + '\'' +
-                '}';
-    }
 }

@@ -1,12 +1,22 @@
 package com.codecool.flight_api_project.city;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.codecool.flight_api_project.airport.Airport;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name="City")
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Builder
 public class City
 {
     @Id
@@ -14,49 +24,13 @@ public class City
     private String countryIsoCode;
     private String cityName;
 
-    public City(String cityIataCode, String countryIsoCode, String cityName) {
-        this.cityIataCode = cityIataCode;
-        this.countryIsoCode = countryIsoCode;
-        this.cityName = cityName;
-    }
+    @OneToMany(fetch = FetchType.EAGER,
+               cascade = CascadeType.ALL,
+               orphanRemoval = true,
+               mappedBy = "city")
+    private List<Airport> airportList =new ArrayList<>();
 
-    public City() {
-    }
 
-    public String getCityIataCode() {
-        return cityIataCode;
-    }
 
-    public String getCountryIsoCode() {
-        return countryIsoCode;
-    }
 
-    public String getCityName() {
-        return cityName;
-    }
-
-    @Override
-    public boolean equals(Object o)
-    {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        City city = (City) o;
-        return Objects.equals(cityIataCode, city.cityIataCode);
-    }
-
-    @Override
-    public int hashCode()
-    {
-        return Objects.hash(cityIataCode);
-    }
-
-    @Override
-    public String toString()
-    {
-        return "City{" +
-                "cityIataCode='" + cityIataCode + '\'' +
-                ", countryIsoCode='" + countryIsoCode + '\'' +
-                ", cityName='" + cityName + '\'' +
-                '}';
-    }
 }

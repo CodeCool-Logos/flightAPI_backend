@@ -1,9 +1,20 @@
 package com.codecool.flight_api_project.airline;
 
+import com.codecool.flight_api_project.airplane.Airplane;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="Airline")
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Data
 public class Airline
 {
 
@@ -12,34 +23,9 @@ public class Airline
     private Long id;
     private String name;
 
-
-
-
-    public Airline(String name)
-    {
-        this.name = name;
-    }
-
-    public Airline()
-    {
-    }
-
-    public Long getId()
-    {
-        return id;
-    }
-
-    public String getName()
-    {
-        return name;
-    }
-
-    @Override
-    public String toString()
-    {
-        return "AirlineModel{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
+    @OneToMany(fetch = FetchType.EAGER,
+                cascade = CascadeType.ALL,
+                orphanRemoval = true,
+                mappedBy = "airline")
+    private List<Airplane> airplaneList =  new ArrayList<>();
 }
