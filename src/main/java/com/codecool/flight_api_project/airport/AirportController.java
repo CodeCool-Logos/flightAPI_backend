@@ -11,21 +11,10 @@ import java.util.List;
 public class AirportController {
 
     @Autowired
-    private final AirportService airportService;
+    private final AirportRepository airportRepository;
 
-    public AirportController(AirportService airportService)
+    public AirportController(AirportRepository airportRepository)
     {
-        this.airportService = airportService;
+        this.airportRepository = airportRepository;
     }
-
-    @GetMapping
-    public List<Airport> allAirports(){
-        return airportService.allAirports();
-    }
-
-//    @PostMapping
-//    public void addAirport(@RequestBody Airport airportModel)
-//    {
-//        airportService.addAirport(airportModel);
-//    }
 }

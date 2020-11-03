@@ -1,6 +1,7 @@
 package com.codecool.flight_api_project.city;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.io.File;
@@ -9,28 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class CityRepository implements CityDAO{
+public interface CityRepository extends JpaRepository<City, String>
+{
 
-    public CityRepository(){};
-
-    private static List<City> DB = new ArrayList<>();
-
-
-    public void populatedCitiesList() throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        DB = objectMapper.readValue(
-                new File("src/main/resources/cities.json"),
-                new TypeReference<List<City>>(){});
-    }
-
-
-    public void insertCity(City city) {
-        DB.add(city);
-    }
-
-
-    @Override
-    public List<City> selectAllCities() {
-        return DB;
-    }
 }

@@ -12,21 +12,11 @@ import java.util.List;
 public class AirplaneController {
 
     @Autowired
-    private final AirplaneService airplaneService;
+    private final AirplaneRepository airplaneRepository;
 
-    public AirplaneController(AirplaneService airplaneService)
+    public AirplaneController(AirplaneRepository airplaneRepository)
     {
-        this.airplaneService = airplaneService;
+        this.airplaneRepository = airplaneRepository;
     }
 
-    @GetMapping
-    public List<Airplane> allAirplanes(){
-        return airplaneService.allAirplanes();
-    }
-
-    @PostMapping
-    public void addAirplane(@RequestBody Airplane airplane)
-    {
-        airplaneService.addAirplane(airplane);
-    }
 }

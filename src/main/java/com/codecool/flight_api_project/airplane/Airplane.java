@@ -9,7 +9,7 @@ public class Airplane
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
     private String manufacturer;
     private String model;
     private int numberOfSeats;
@@ -25,7 +25,7 @@ public class Airplane
     public Airplane() {
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 

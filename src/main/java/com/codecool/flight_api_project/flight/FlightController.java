@@ -13,27 +13,11 @@ import java.util.List;
 public class FlightController
 {
     @Autowired
-    private final FlightService flightService;
+    private final FlightRepository flightRepository;
 
-    public FlightController(FlightService flightService)
+    public FlightController(FlightRepository flightRepository)
     {
-        this.flightService = flightService;
+        this.flightRepository = flightRepository;
     }
 
-    @GetMapping
-    public List<Flight> allFlights(){
-        return flightService.allFlights();
-    }
-
-
-    @GetMapping("{from}/{to}/{date}")
-    public List<Flight> allFlights(@PathVariable String from, @PathVariable String to, @PathVariable("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date){
-        return flightService.searchFlight(from, to, date);
-    }
-
-    @PostMapping
-    public void addFLight(@RequestBody Flight flight)
-    {
-        flightService.addFlight(flight);
-    }
 }

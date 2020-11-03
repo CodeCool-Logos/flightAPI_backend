@@ -18,22 +18,6 @@ public class FlightApiProjectApplication{
 
     public static void main(String[] args) throws IOException {
 
-        UserRepository userRepository = new UserRepository();
-        userRepository.populatedUsersList();
-
-        CityRepository cityRepository = new CityRepository();
-        cityRepository.populatedCitiesList();
-
-        AirportRepository airportRepository = new AirportRepository();
-        airportRepository.populatedAirportsList();
-
-        AirlineRepository airlineRepository = new AirlineRepository();
-        airlineRepository.populatedAirlinesList();
-
-        AirplaneRepository airplaneRepository = new AirplaneRepository();
-        airplaneRepository.populatedAirplanesList();
-
-
         SpringApplication.run(FlightApiProjectApplication.class, args);
 
     }

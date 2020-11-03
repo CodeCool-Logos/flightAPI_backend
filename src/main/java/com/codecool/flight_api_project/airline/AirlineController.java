@@ -10,21 +10,9 @@ import java.util.List;
 public class AirlineController {
 
     @Autowired
-    private final AirlineService airlineService ;
+    private final AirlineRepository airlineRepository ;
 
-    public AirlineController(AirlineService airlineService) {
-        this.airlineService = airlineService;
+    public AirlineController(AirlineRepository airlineRepository) {
+        this.airlineRepository = airlineRepository;
     }
-
-
-    @GetMapping
-    public List<Airline> allAirline(){
-        return airlineService.allAirlines();
-    }
-
-    @PostMapping
-    public void addAirline(Airline airline){
-        airlineService.addAirline(airline);
-    }
-
 }

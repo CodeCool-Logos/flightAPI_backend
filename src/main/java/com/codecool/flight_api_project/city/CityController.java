@@ -12,21 +12,11 @@ import java.util.List;
 public class CityController {
 
     @Autowired
-    private final CityService cityService;
+    private final CityRepository cityRepository;
 
-    public CityController(CityService cityService)
+    public CityController(CityRepository cityRepository)
     {
-        this.cityService = cityService;
+        this.cityRepository = cityRepository;
     }
 
-    @GetMapping
-    public List<City> allCities(){
-        return cityService.allCities();
-    }
-
-    @PostMapping
-    public void addCity(@RequestBody City city)
-    {
-        cityService.addCity(city);
-    }
 }
