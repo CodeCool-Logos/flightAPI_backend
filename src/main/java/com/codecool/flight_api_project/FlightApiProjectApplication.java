@@ -42,19 +42,21 @@ public class FlightApiProjectApplication{
 
 
 
+
+
+//         Create airports
+        Airport otopeni = Airport.builder().airportName("Henri Coanda International Airport").build();
+        Airport heathrow = Airport.builder().airportName("London Heathrow Airport").build();
+        Airport charlesDeGaulle = Airport.builder().airportName("Charles de Gaulle International Airport").build();
+        Airport traianVuia = Airport.builder().airportName("Timisoara Traian Vuia Airport").build();
+
+
+
         // Create cities
-        City bucuresti = City.builder().cityName("Bucuresti").build();
+        City bucuresti = City.builder().cityName("Bucuresti").airport(otopeni).airport(traianVuia).build();
         City london = City.builder().cityName("London").build();
         City paris = City.builder().cityName("Paris").build();
         City timisoara = City.builder().cityName("Timisoara").build();
-
-//         Create airports
-        Airport otopeni = Airport.builder().airportName("Henri Coanda International Airport").city(bucuresti).build();
-        Airport heathrow = Airport.builder().airportName("London Heathrow Airport").city(london).build();
-        Airport charlesDeGaulle = Airport.builder().airportName("Charles de Gaulle International Airport").city(paris).build();
-        Airport traianVuia = Airport.builder().airportName("Timisoara Traian Vuia Airport").city(timisoara).build();
-
-
 
 //        City bucuresti = new City("Buc");
 //        City ldn = new City("Buc");

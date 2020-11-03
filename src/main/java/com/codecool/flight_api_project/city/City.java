@@ -23,7 +23,7 @@ public class City
 //    private String countryIsoCode;
     private String cityName;
 
-
+    @Singular("airport")
     @OneToMany(
             fetch = FetchType.EAGER,
                cascade = CascadeType.ALL,
