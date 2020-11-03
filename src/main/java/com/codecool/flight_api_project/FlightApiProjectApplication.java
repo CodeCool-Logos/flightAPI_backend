@@ -1,6 +1,12 @@
 package com.codecool.flight_api_project;
+import com.codecool.flight_api_project.airline.Airline;
+import com.codecool.flight_api_project.airline.AirlineRepository;
+import com.codecool.flight_api_project.airplane.Airplane;
+import com.codecool.flight_api_project.airplane.AirplaneRepository;
 import com.codecool.flight_api_project.airport.Airport;
 import com.codecool.flight_api_project.airport.AirportRepository;
+import com.codecool.flight_api_project.city.City;
+import com.codecool.flight_api_project.city.CityRepository;
 import com.codecool.flight_api_project.flight.Flight;
 import com.codecool.flight_api_project.flight.FlightRepository;
 import org.springframework.boot.SpringApplication;
@@ -9,6 +15,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.springframework.context.ConfigurableApplicationContext;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -25,65 +33,87 @@ public class FlightApiProjectApplication{
 
         FlightRepository flightRepository= configurableApplicationContext.getBean(FlightRepository.class);
         AirportRepository airportRepository = configurableApplicationContext.getBean(AirportRepository.class);
+        AirlineRepository airlineRepository = configurableApplicationContext.getBean(AirlineRepository.class);
+        CityRepository cityRepository = configurableApplicationContext.getBean(CityRepository.class);
+        AirplaneRepository airplaneRepository = configurableApplicationContext.getBean(AirplaneRepository.class);
 
-        Airport otopeni = new Airport("Otopeni");
-        Airport timisoara = new Airport("Timisoara");
-        Airport heathrow = new Airport("Heathrow");
-        Airport paris = new Airport("Charles de Gaulle");
+        // Create airports
+        Airport otopeni = Airport.builder().airportIataCode("OTP").airportName("Henri Coanda International Airport").build();
+        Airport heathrow = Airport.builder().airportIataCode("LHR").airportName("London Heathrow Airport").build();
+        Airport charlesDeGaulle = Airport.builder().airportIataCode("CDG").airportName("Charles de Gaulle International Airport").build();
+        Airport traianVuia = Airport.builder().airportIataCode("TSR").airportName("Timisoara Traian Vuia Airport").build();
 
+        // Create cities
+        City bucuresti = City.builder().cityIataCode("BUC").cityName("Bucuresti").airportList(Arrays.asList(otopeni)).build();
+        City london = City.builder().cityIataCode("LDN").cityName("London").airportList(Arrays.asList(heathrow)).build();
+        City paris = City.builder().cityIataCode("PRS").cityName("Paris").airportList(Arrays.asList(charlesDeGaulle)).build();
+        City timisoara = City.builder().cityIataCode("TMS").cityName("Timisoara").airportList(Arrays.asList(traianVuia)).build();
 
-        Flight flightOtoHeat = new Flight(
-                LocalDate.of(2020,11, 1),
-                LocalTime.of(6, 30),
-                LocalTime.of(8, 30),
-                (long) 625,
-                otopeni,
-                heathrow
-        );
+        //Create airplanes
+        Airplane b373 = Airplane.builder().manufacturer("Boeing").model("B373").numberOfSeats((long) 160).speed(800).build();
+        Airplane b737 = Airplane.builder().manufacturer("Boeing").model("B737").numberOfSeats((long) 180).speed(700).build();
+        Airplane b747 = Airplane.builder().manufacturer("Boeing").model("B747").numberOfSeats((long) 200).speed(900).build();
+        Airplane b777 = Airplane.builder().manufacturer("Boeing").model("B777").numberOfSeats((long) 190).speed(750).build();
+        Airplane a320 = Airplane.builder().manufacturer("Airbus").model("A320").numberOfSeats((long) 150).speed(800).build();
+        Airplane a300 = Airplane.builder().manufacturer("Airbus").model("A300").numberOfSeats((long) 160).speed(800).build();
+        Airplane a340 = Airplane.builder().manufacturer("Airbus").model("A340").numberOfSeats((long) 180).speed(900).build();
 
-
-        Flight flightOtoPar = new Flight(
-                LocalDate.of(2020,11, 1),
-                LocalTime.of(6, 30),
-                LocalTime.of(8, 30),
-                (long) 625,
-                otopeni,
-                paris
-        );
-
-        Flight flightTimHeat = new Flight(
-                LocalDate.of(2020,11, 1),
-                LocalTime.of(6, 30),
-                LocalTime.of(8, 30),
-                (long) 625,
-                timisoara,
-                heathrow
-        );
-
-        Flight flightOtopTim = new Flight(
-                LocalDate.of(2020,11, 1),
-                LocalTime.of(6, 30),
-                LocalTime.of(8, 30),
-                (long) 625,
-                otopeni,
-                timisoara
-        );
+        //Create airlines
+        Airline tarom = Airline.builder().name("Tarom").airplaneList(Arrays.asList(b737, a320, a300)).build();
+        Airline britishAirways = Airline.builder().name("British Airways").airplaneList(Arrays.asList(b373, b747, a300)).build();
+        Airline airFrance = Airline.builder().name("Air France").airplaneList(Arrays.asList(b777, b747, a300)).build();
+        Airline wizzAir = Airline.builder().name("Wizz Air").airplaneList(Arrays.asList(b747, a320, a340)).build();
 
 
+        Flight flightOtoHeat = Flight.builder().date(LocalDate.of(2020, 11, 1))
+                .price((long) 30).departureTime(LocalTime.of(6, 30)).arrivalTime(LocalTime.of(9, 30))
+                .departureAirport(otopeni).arrivalAirport(heathrow).airline(wizzAir).build();
+
+        Flight flightOtoHeat2 = Flight.builder().date(LocalDate.of(2020, 11, 1))
+                .price((long) 35).departureTime(LocalTime.of(8, 30)).arrivalTime(LocalTime.of(11, 30))
+                .departureAirport(otopeni).arrivalAirport(heathrow).airline(britishAirways).build();
+
+        Flight flightOtoPar = Flight.builder().date(LocalDate.of(2020, 11, 1))
+                .price((long) 95).departureTime(LocalTime.of(10, 00)).arrivalTime(LocalTime.of(12, 00))
+                .departureAirport(otopeni).arrivalAirport(charlesDeGaulle).airline(airFrance).build();
+
+        Flight flightTimHeat = Flight.builder().date(LocalDate.of(2020, 11, 1))
+                .price((long) 80).departureTime(LocalTime.of(3, 30)).arrivalTime(LocalTime.of(6, 00))
+                .departureAirport(traianVuia).arrivalAirport(heathrow).airline(britishAirways).build();
+
+        Flight flightOtoTim = Flight.builder().date(LocalDate.of(2020, 11, 1))
+                .price((long) 60).departureTime(LocalTime.of(13, 00)).arrivalTime(LocalTime.of(14, 00))
+                .departureAirport(otopeni).arrivalAirport(traianVuia).airline(tarom).build();
 
 
-//        plecari.addOutgoingFlights(flightOne);
-//        sosiri.addIncomingFlights(flightOne);
         airportRepository.save(otopeni);
         airportRepository.save(heathrow);
-        airportRepository.save(paris);
-        airportRepository.save(timisoara);
+        airportRepository.save(charlesDeGaulle);
+        airportRepository.save(traianVuia);
 
         flightRepository.save(flightOtoHeat);
+        flightRepository.save(flightOtoHeat2);
         flightRepository.save(flightOtoPar);
         flightRepository.save(flightTimHeat);
-        flightRepository.save(flightOtopTim);
+        flightRepository.save(flightOtoTim);
+//
+        airplaneRepository.save(b373);
+        airplaneRepository.save(b737);
+        airplaneRepository.save(b747);
+        airplaneRepository.save(b777);
+        airplaneRepository.save(a320);
+        airplaneRepository.save(a300);
+        airplaneRepository.save(a340);
+//
+//        airlineRepository.save(tarom);
+//        airlineRepository.save(britishAirways);
+//        airlineRepository.save(airFrance);
+//        airlineRepository.save(wizzAir);
 
+        cityRepository.save(bucuresti);
+        cityRepository.save(paris);
+        cityRepository.save(london);
+        cityRepository.save(timisoara);
     }
 
 }

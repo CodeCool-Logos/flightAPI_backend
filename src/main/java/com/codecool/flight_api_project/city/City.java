@@ -1,10 +1,7 @@
 package com.codecool.flight_api_project.city;
 
 import com.codecool.flight_api_project.airport.Airport;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -23,6 +20,7 @@ public class City
     private String cityIataCode;
     private String countryIsoCode;
     private String cityName;
+
 
     @OneToMany(fetch = FetchType.EAGER,
                cascade = CascadeType.ALL,

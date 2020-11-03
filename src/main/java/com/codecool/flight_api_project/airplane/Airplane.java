@@ -22,7 +22,7 @@ public class Airplane
     private Long id;
     private String manufacturer;
     private String model;
-    private int numberOfSeats;
+    private Long numberOfSeats;
     private double speed;
 
     @ManyToOne
