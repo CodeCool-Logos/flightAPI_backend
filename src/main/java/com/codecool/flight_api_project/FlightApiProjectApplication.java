@@ -1,9 +1,4 @@
 package com.codecool.flight_api_project;
-import com.codecool.flight_api_project.airline.AirlineRepository;
-import com.codecool.flight_api_project.airplane.AirplaneRepository;
-import com.codecool.flight_api_project.airport.AirportRepository;
-import com.codecool.flight_api_project.city.CityRepository;
-import com.codecool.flight_api_project.user.UserRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

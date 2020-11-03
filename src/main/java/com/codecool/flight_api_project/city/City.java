@@ -3,8 +3,6 @@ package com.codecool.flight_api_project.city;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 @Entity

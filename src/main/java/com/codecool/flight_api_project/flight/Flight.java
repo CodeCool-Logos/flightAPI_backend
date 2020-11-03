@@ -1,11 +1,7 @@
 package com.codecool.flight_api_project.flight;
 
-import com.codecool.flight_api_project.airline.Airline;
-import com.codecool.flight_api_project.city.City;
-
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
 
 
 @Entity
