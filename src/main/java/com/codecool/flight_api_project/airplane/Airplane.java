@@ -1,6 +1,5 @@
 package com.codecool.flight_api_project.airplane;
 
-import com.codecool.flight_api_project.airline.Airline;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,11 +24,9 @@ public class Airplane
     private Long numberOfSeats;
     private double speed;
 
-    @ManyToOne
-    @JoinColumn(name = "airline_id")
-    private Airline airline;
-
-
-
+//    @ManyToOne
+//    @JoinColumn(name = "airline_id")
+////    @JsonIgnore
+//    private Airline airline;
 
 }

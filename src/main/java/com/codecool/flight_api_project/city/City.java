@@ -11,42 +11,20 @@ import java.util.List;
 @Table(name="City")
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Builder
 public class City
 {
-//    @Id
-//    private String cityIataCode;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-//    private String countryIsoCode;
     private String cityName;
 
-    @Singular("airport")
-    @OneToMany(
-            fetch = FetchType.EAGER,
-               cascade = CascadeType.ALL,
-               orphanRemoval = true,
-               mappedBy = "city")
-    private List<Airport> airportList =new ArrayList<>();
+//    @Singular("airport")
+//    @OneToMany(
+//            fetch = FetchType.EAGER,
+//               cascade = CascadeType.ALL,
+//               orphanRemoval = true,
+//               mappedBy = "city")
+//    private List<Airport> airportList ;
 
-//    public City(String cityName) {
-//        this.cityName = cityName;
-//    }
-//
-//    public City() {
-//    }
-//
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public String getCityName() {
-//        return cityName;
-//    }
-//
-//    public List<Airport> getAirportList() {
-//        return airportList;
-//    }
 }

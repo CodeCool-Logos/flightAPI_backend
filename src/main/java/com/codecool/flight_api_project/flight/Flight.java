@@ -2,6 +2,7 @@ package com.codecool.flight_api_project.flight;
 
 import com.codecool.flight_api_project.airline.Airline;
 import com.codecool.flight_api_project.airport.Airport;
+import com.fasterxml.jackson.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -36,8 +37,8 @@ public class Flight
     @JoinColumn(name = "arrival_airport_id")
     private Airport arrivalAirport;
 
-    @ManyToOne
-    @JoinColumn(name = "airline_id")
-    private Airline airline;
+//    @ManyToOne
+//    @JoinColumn(name = "airline_id")
+//    private Airline airline;
 
 }

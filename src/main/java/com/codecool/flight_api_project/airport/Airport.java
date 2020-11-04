@@ -21,9 +21,9 @@ public class Airport {
     private Long airportIataCode;
     private String airportName;
 
-    @ManyToOne
-    @JoinColumn(name = "city_id")
-    private City city;
+//    @ManyToOne
+//    @JoinColumn(name = "city_id")
+//    private City city;
 
 //    public Airport(String airportName, City city) {
 //        this.airportName = airportName;
