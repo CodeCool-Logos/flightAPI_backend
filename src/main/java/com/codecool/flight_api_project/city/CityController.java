@@ -33,7 +33,7 @@ public class CityController {
     }
 
     @PostMapping()
-    public ResponseEntity<City> addAirline(@RequestBody final City city){
+    public ResponseEntity<City> addCity(@RequestBody final City city){
        City savedCity = cityService.saveCity(city);
         return new ResponseEntity<>(savedCity, HttpStatus.CREATED);
     }
