@@ -26,7 +26,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableSwagger2
 @SpringBootApplication
-//@Sql("/data.sql")
 public class FlightApiProjectApplication{
 
     public static void main(String[] args) throws IOException {

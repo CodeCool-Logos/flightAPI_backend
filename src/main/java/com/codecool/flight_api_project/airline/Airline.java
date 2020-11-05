@@ -28,7 +28,10 @@ public class Airline
     @Column(name = "name")
     private String name;
 
-    @Column(name="iso")
+//    @Column(name="airline_iata_code")
+//    private String airlineIataCode;
+
+    @Column(name = "iso")
     private String iso;
 
 //    @OneToMany(

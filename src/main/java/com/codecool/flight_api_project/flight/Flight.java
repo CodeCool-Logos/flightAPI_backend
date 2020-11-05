@@ -3,10 +3,7 @@ package com.codecool.flight_api_project.flight;
 import com.codecool.flight_api_project.airline.Airline;
 import com.codecool.flight_api_project.airport.Airport;
 import com.fasterxml.jackson.annotation.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -18,27 +15,37 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Data
+@Setter
+@Getter
 public class Flight
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private LocalDate date;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "flight_id")
+    private Long flight_id;
+
+    @Column(name = "departure_date")
+    private LocalDate departureDate;
+
+    @Column(name = "price")
     private Long price;
+
+    @Column(name = "departure_time")
     private LocalTime departureTime;
+
+    @Column(name = "arrival_time")
     private LocalTime arrivalTime;
 
-//    @ManyToOne
-//    @JoinColumn(name = "departure_airport_id")
-//    private Airport departureAirport;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "arrival_airport_id")
-//    private Airport arrivalAirport;
+    @ManyToOne
+    @JoinColumn(name = "departure_airport_id")
+    private Airport departureAirport;
 
-//    @ManyToOne
-//    @JoinColumn(name = "airline_id")
-//    private Airline airline;
+    @ManyToOne
+    @JoinColumn(name = "arrival_airport_id")
+    private Airport arrivalAirport;
+
+    @ManyToOne
+    @JoinColumn(name = "airline_id")
+    private Airline airline;
 
 }

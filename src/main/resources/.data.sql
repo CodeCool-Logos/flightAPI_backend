@@ -22,13 +22,13 @@ insert into airplane (manufacturer, model, number_of_seats, speed, airline_id) v
 insert into airplane (manufacturer, model, number_of_seats, speed, airline_id) values ('Airbus', 'A340', 180, 900,7);
 
 
-insert into flight (airline_id, arrival_airport_id, arrival_time, date, departure_airport_id, departure_time, price)
+insert into flight (airline_id, arrival_airport_id, arrival_time, departure_date, departure_airport_id, departure_time, price)
                 values (1, 1, '06:30', '2020-11-01', 2, '09:30', 35);
-insert into flight (airline_id, arrival_airport_id, arrival_time, date, departure_airport_id, departure_time, price)
+insert into flight (airline_id, arrival_airport_id, arrival_time, departure_date, departure_airport_id, departure_time, price)
                 values (2, 2, '06:30', '2020-11-01', 1, '09:30', 35);
-insert into flight (airline_id, arrival_airport_id, arrival_time, date, departure_airport_id, departure_time, price)
+insert into flight (airline_id, arrival_airport_id, arrival_time, departure_date, departure_airport_id, departure_time, price)
             values (3, 1, '06:30', '2020-11-01', 3, '09:30', 35);
-insert into flight (airline_id, arrival_airport_id, arrival_time, date, departure_airport_id, departure_time, price)
+insert into flight (airline_id, arrival_airport_id, arrival_time, departure_date, departure_airport_id, departure_time, price)
                 values (1, 3, '06:30', '2020-11-01', 1, '09:30', 35);
-insert into flight (airline_id, arrival_airport_id, arrival_time, date, departure_airport_id, departure_time, price)
+insert into flight (airline_id, arrival_airport_id, arrival_time, departure_date, departure_airport_id, departure_time, price)
                 values (4, 2, '06:30:00', '2020-11-01', 4, '09:30:00', 35);
