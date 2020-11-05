@@ -10,4 +10,5 @@ public interface AirlineService {
     Airline updateAirlineById(Long id,Airline airlineToUpdate);
 
 
+
 }
