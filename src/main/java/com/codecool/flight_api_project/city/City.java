@@ -25,6 +25,6 @@ public class City
 //               cascade = CascadeType.ALL,
 //               orphanRemoval = true,
 //               mappedBy = "city")
-//    private List<Airport> airportList ;
+//    private List<Airport> airportList;
 
 }

@@ -1,47 +1,46 @@
 package com.codecool.flight_api_project.airport;
 
 import com.codecool.flight_api_project.city.City;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name="Airport")
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 @Builder
+@ToString
 public class Airport {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long airportIataCode;
+    @Column(name="airport_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name="airport_iata_code")
+    private String airportIataCode;
+
+    @Column(name="airport_name")
     private String airportName;
 
-//    @ManyToOne
-//    @JoinColumn(name = "city_id")
-//    private City city;
+    @ManyToOne
+    @JoinColumn(name = "city_id")
+    private City city;
 
-//    public Airport(String airportName, City city) {
-//        this.airportName = airportName;
-//        this.city = city;
-//    }
-//
-//    public Airport() {
-//    }
-//
-//    public Long getAirportIataCode() {
-//        return airportIataCode;
-//    }
-//
-//    public String getAirportName() {
-//        return airportName;
-//    }
-//
-//    public City getCity() {
-//        return city;
-//    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Airport airport = (Airport) o;
+        return Objects.equals(airportIataCode, airport.airportIataCode);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(airportIataCode);
+    }
 }
