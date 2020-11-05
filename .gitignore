@@ -4,6 +4,8 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+src/main/resources/data/flightDB.mv.db
+
 ### STS ###
 .apt_generated
 .classpath

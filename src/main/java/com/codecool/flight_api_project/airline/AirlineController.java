@@ -1,4 +1,5 @@
 package com.codecool.flight_api_project.airline;
+import com.codecool.flight_api_project.airport.Airport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/airlines")
@@ -28,6 +30,11 @@ public class AirlineController {
         return airlineRepository.findAll();
     }
 
+    @GetMapping(path="/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    Optional<Airline> getAirlineById(@PathVariable("id") Long id){
+        return airlineRepository.findById(id);
+    }
+
     @PostMapping()
     public ResponseEntity<Airline> addAirline(@RequestBody final Airline airline){
         Airline savedAirline = airlineService.saveAirline(airline);
@@ -35,7 +42,7 @@ public class AirlineController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletePlanetById(
+    public ResponseEntity<String> deleteAirlineById(
             @PathVariable("id") final Long id) {
         airlineService.deleteAirlineById(id);
         return new ResponseEntity<>("Success", HttpStatus.OK);

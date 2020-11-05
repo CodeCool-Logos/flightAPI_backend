@@ -7,7 +7,7 @@ import java.util.List;
 
 
 @Repository
-public interface AirportRepository extends JpaRepository<Airport, String>
+public interface AirportRepository extends JpaRepository<Airport, Long>
 {
 
 
