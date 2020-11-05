@@ -18,10 +18,19 @@ public class Airplane
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name ="manufacturer")
     private String manufacturer;
+
+    @Column(name ="model")
     private String model;
+
+    @Column(name ="numberOfSeats")
     private Long numberOfSeats;
+
+    @Column(name ="speed")
     private double speed;
 
 //    @ManyToOne
