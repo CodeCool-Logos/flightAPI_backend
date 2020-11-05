@@ -11,6 +11,8 @@ import java.util.List;
 @Table(name="City")
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Builder
 @Data
 public class City
@@ -23,12 +25,11 @@ public class City
     @Column(name ="cityName")
     private String cityName;
 
-//    @Singular("airport")
+
 //    @OneToMany(
-//            fetch = FetchType.EAGER,
 //               cascade = CascadeType.ALL,
 //               orphanRemoval = true,
 //               mappedBy = "city")
-//    private List<Airport> airportList ;
+//    private List<Airport> airportList;
 
 }

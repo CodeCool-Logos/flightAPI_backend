@@ -29,13 +29,13 @@ public class Flight
     private LocalTime departureTime;
     private LocalTime arrivalTime;
 
-    @ManyToOne
-    @JoinColumn(name = "departure_airport_id")
-    private Airport departureAirport;
-
-    @ManyToOne
-    @JoinColumn(name = "arrival_airport_id")
-    private Airport arrivalAirport;
+//    @ManyToOne
+//    @JoinColumn(name = "departure_airport_id")
+//    private Airport departureAirport;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "arrival_airport_id")
+//    private Airport arrivalAirport;
 
 //    @ManyToOne
 //    @JoinColumn(name = "airline_id")

@@ -1,6 +1,14 @@
 #FileLock
+<<<<<<< HEAD
 #Thu Nov 05 10:59:40 UTC 2020
 server=localhost\:62103
 hostName=localhost
 method=file
 id=175980fde98624d8bb861ad6f717155c693a5aebd82
+=======
+#Thu Nov 05 11:29:00 UTC 2020
+server=localhost\:64595
+hostName=localhost
+method=file
+id=175982ab87721a0dc9373ea75afe3a046341f79d412
+>>>>>>> e630bf278cfac95bc280cf23df901be099418ad8
