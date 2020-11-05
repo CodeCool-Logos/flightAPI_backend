@@ -25,7 +25,7 @@ create table AIRPORT (
 create table FLIGHT (
     flight_id bigint not null auto_increment,
     arrival_time time,
-    date date,
+    departure_date date,
     departure_time time,
     price bigint,
     airline_id bigint,
