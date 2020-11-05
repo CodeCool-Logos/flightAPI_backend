@@ -11,17 +11,20 @@ import java.util.List;
 @Table(name="City")
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Builder
 public class City
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long city_id;
+
+    @Column(name = "city_name")
     private String cityName;
 
-//    @Singular("airport")
+
 //    @OneToMany(
-//            fetch = FetchType.EAGER,
 //               cascade = CascadeType.ALL,
 //               orphanRemoval = true,
 //               mappedBy = "city")

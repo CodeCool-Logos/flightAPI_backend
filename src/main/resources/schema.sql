@@ -19,7 +19,8 @@ create table AIRPORT (
     airport_id BIGINT auto_increment not null, primary key (airport_id),
     airport_name varchar(255),
     airport_iata_code varchar(3),
-    city_id bigint, foreign key (city_id) references city(city_id));
+    city_id bigint);
+
 
 create table FLIGHT (
     flight_id bigint not null auto_increment,
@@ -32,8 +33,9 @@ create table FLIGHT (
     departure_airport_id bigint,
     primary key (flight_id));
 
+
+alter table airport  add foreign key (city_id) references city(city_id);
 -- alter table airplane add constraint foreign key (airline_id) references airline;
--- alter table airport add foreign key (city_id) references city;
 -- alter table flight add constraint foreign key (airline_id) references airline;
 -- alter table flight add constraint foreign key (arrival_airport_id) references airport;
 -- alter table flight add constraint foreign key (departure_airport_id) references airport;

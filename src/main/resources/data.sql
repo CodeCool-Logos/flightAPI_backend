@@ -3,10 +3,10 @@ insert into city (city_name) values ('London');
 insert into city (city_name) values ('Paris');
 insert into city (city_name) values ('Timisoara');
 --
-insert into airport (airport_name, airport_iata_code) values ('Henri Coanda International Airport', 'OTP');
-insert into airport (airport_name, airport_iata_code) values ('London Heathrow Airport', 'LHR');
-insert into airport (airport_name, airport_iata_code) values ('Charles de Gaulle International Airport', 'CHD');
-insert into airport (airport_name, airport_iata_code) values ('Timisoara Traian Vuia Airport', 'TVT');
+insert into airport (airport_name, airport_iata_code, CITY_ID) values ('Henri Coanda International Airport', 'OTP', 1);
+insert into airport (airport_name, airport_iata_code, CITY_ID) values ('London Heathrow Airport', 'LHR', 2);
+insert into airport (airport_name, airport_iata_code, CITY_ID) values ('Charles de Gaulle International Airport', 'CHD', 3);
+insert into airport (airport_name, airport_iata_code, CITY_ID) values ('Timisoara Traian Vuia Airport', 'TVT', 4);
 
 insert into airline (name, iso) values ('Tarom','OTO');
 insert into airline (name, iso) values ('British Airways','OTO');
