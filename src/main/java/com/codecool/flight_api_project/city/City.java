@@ -14,13 +14,15 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
+@Data
 public class City
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long city_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="city_id")
+    private Long cityId;
 
-    @Column(name = "city_name")
+    @Column(name ="city_name")
     private String cityName;
 
 
