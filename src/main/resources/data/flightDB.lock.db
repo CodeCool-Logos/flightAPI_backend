@@ -1,6 +1,6 @@
 #FileLock
-#Fri Nov 06 00:55:40 UTC 2020
-server=127.0.1.1\:46693
-hostName=alex-thinkpad
+#Tue Nov 17 15:24:39 EET 2020
+server=localhost\:56677
+hostName=localhost
 method=file
-id=1759b0d481102234a86c051f8fe6309ea6cb92d84e0
+id=175d660ecb5d3a2635812c264c346e592ef644989c4
