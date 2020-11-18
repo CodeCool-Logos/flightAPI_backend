@@ -23,3 +23,4 @@ public enum AppUserPermission {
         return permission;
     }
 }
+
