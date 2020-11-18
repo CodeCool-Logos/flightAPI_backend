@@ -9,6 +9,14 @@ import com.codecool.flight_api_project.airline.AirlineRepository;
 //import com.codecool.flight_api_project.city.CityRepository;
 //import com.codecool.flight_api_project.flight.Flight;
 //import com.codecool.flight_api_project.flight.FlightRepository;
+import com.codecool.flight_api_project.airplane.Airplane;
+import com.codecool.flight_api_project.airplane.AirplaneRepository;
+import com.codecool.flight_api_project.airport.Airport;
+import com.codecool.flight_api_project.airport.AirportRepository;
+import com.codecool.flight_api_project.city.City;
+import com.codecool.flight_api_project.city.CityRepository;
+import com.codecool.flight_api_project.flight.Flight;
+import com.codecool.flight_api_project.flight.FlightRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -32,7 +40,7 @@ public class FlightApiProjectApplication{
 
 //        ConfigurableApplicationContext configurableApplicationContext =
                 SpringApplication.run(FlightApiProjectApplication.class, args);
-
+//
 //        AirplaneRepository airplaneRepository = configurableApplicationContext.getBean(AirplaneRepository.class);
 //        AirportRepository airportRepository = configurableApplicationContext.getBean(AirportRepository.class);
 //        CityRepository cityRepository = configurableApplicationContext.getBean(CityRepository.class);
@@ -59,20 +67,20 @@ public class FlightApiProjectApplication{
 //        City paris = City.builder().cityName("Paris").build();
 //        City timisoara = City.builder().cityName("Timisoara").build();
 //
-////        City bucuresti = new City("Buc");
-////        City ldn = new City("Buc");
-////        City prs = new City("Buc");
-////        City tms = new City("Buc");
-////
-////        Airport otopeni = new Airport("Otopeni", bucuresti);
-////        Airport heathrow = new Airport("Heat", ldn);
-////        Airport charlesDeGaulle = new Airport("Char",prs);
-////        Airport traianVuia = new Airport("Tra Vuia",tms);
+//        City bucuresti = new City("Buc");
+//        City ldn = new City("Buc");
+//        City prs = new City("Buc");
+//        City tms = new City("Buc");
 //
-////        List<Airplane> airplaneListTarom = Arrays.asList(b737,a300,b373);
-////        List<Airplane> airplaneListB = Arrays.asList(b373,a320,b373);
-////        List<Airplane> airplaneListF= Arrays.asList(b747,a300,b373);
-////        List<Airplane> airplaneListW = Arrays.asList(b737,a340,b373);
+//        Airport otopeni = new Airport("Otopeni", bucuresti);
+//        Airport heathrow = new Airport("Heat", ldn);
+//        Airport charlesDeGaulle = new Airport("Char",prs);
+//        Airport traianVuia = new Airport("Tra Vuia",tms);
+//
+//        List<Airplane> airplaneListTarom = Arrays.asList(b737,a300,b373);
+//        List<Airplane> airplaneListB = Arrays.asList(b373,a320,b373);
+//        List<Airplane> airplaneListF= Arrays.asList(b747,a300,b373);
+//        List<Airplane> airplaneListW = Arrays.asList(b737,a340,b373);
 //
 //
 //        //Create airlines
@@ -162,5 +170,5 @@ public class FlightApiProjectApplication{
 //        flightRepository.save(flightTimHeat);
 //        flightRepository.save(flightOtoTim);
     }
-
+//
 }

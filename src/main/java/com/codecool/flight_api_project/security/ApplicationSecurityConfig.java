@@ -7,12 +7,20 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+
+import static com.codecool.flight_api_project.security.AppUserRoles.ADMIN;
+import static com.codecool.flight_api_project.security.AppUserRoles.USER;
 
 @Configuration
 @EnableWebSecurity
 public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
+
 
     private final PasswordEncoder passwordEncoder;
 
@@ -45,7 +53,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.PUT, "/api/v1/airports/{id}").hasRole("ADMIN")
 
                 .antMatchers(HttpMethod.GET, "/api/v1/airplanes").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/v1/airplanes").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, "/api/v1/airplanes").hasRole(ADMIN.name())
                 .antMatchers(HttpMethod.DELETE, "/api/v1/airplanes/{id}").hasRole("ADMIN")
                 .antMatchers(HttpMethod.PUT, "/api/v1/airplanes/{id}").hasRole("ADMIN")
 
@@ -59,10 +67,27 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic();
     }
 
+    @Override
     @Bean
-    PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+    protected UserDetailsService userDetailsService() {
+        UserDetails katy = User.builder()
+                .username("katy")
+                .password(passwordEncoder.encode("password123"))
+//                .roles(ADMIN.name())
+                .authorities(ADMIN.getGrantedAuthorities())
+                .build();
+        UserDetails ion = User.builder()
+                .username("ion")
+                .password(passwordEncoder.encode("password"))
+//                .roles(ADMIN.name())
+                .authorities(USER.getGrantedAuthorities())
+                .build();
 
+        return new InMemoryUserDetailsManager(
+                katy,
+                ion
+        );
+
+    }
 
 }
