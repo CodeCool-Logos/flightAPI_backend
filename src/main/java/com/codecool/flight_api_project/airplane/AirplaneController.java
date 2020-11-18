@@ -1,5 +1,6 @@
 package com.codecool.flight_api_project.airplane;
 import com.codecool.flight_api_project.city.City;
+import com.codecool.flight_api_project.flight.Flight;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -30,6 +31,12 @@ public class AirplaneController {
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     List<Airplane> getAirplane(){
         return airplaneRepository.findAll();
+    }
+
+    @GetMapping(path = "/{id}",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public Airplane getAirplaneBy(@PathVariable Long id){
+        return airplaneRepository.getOne(id);
     }
 
     @PostMapping()
