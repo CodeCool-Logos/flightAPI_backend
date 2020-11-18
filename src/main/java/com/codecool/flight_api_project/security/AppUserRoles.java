@@ -39,9 +39,11 @@ public enum  AppUserRoles {
         this.permissions = permissions;
     }
 
+
     public Set<AppUserPermission> getPermissions() {
         return permissions;
     }
+
 
     public Set<SimpleGrantedAuthority> getGrantedAuthorities() {
         Set<SimpleGrantedAuthority> permissions = getPermissions().stream()
