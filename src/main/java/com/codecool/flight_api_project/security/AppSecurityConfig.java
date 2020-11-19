@@ -22,6 +22,8 @@ import static com.codecool.flight_api_project.security.AppUserRoles.*;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
+
+
     private final PasswordEncoder passwordEncoder;
 
 
