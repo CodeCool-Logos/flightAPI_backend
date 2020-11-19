@@ -1,14 +1,6 @@
 #FileLock
-<<<<<<< HEAD
-#Wed Nov 18 10:15:51 UTC 2020
-server=192.168.0.190\:46307
-hostName=192.168.0.190
+#Thu Nov 19 11:36:18 EET 2020
+server=localhost\:52772
+hostName=localhost
 method=file
-id=175dada6eb5fe345eb8438bd711dd5af3157dcbc19e
-=======
-#Wed Nov 18 14:55:37 UTC 2020
-server=127.0.1.1\:40163
-hostName=alex-thinkpad
-method=file
-id=175dbda97b82094268ca501851fd1fd594df2762343
->>>>>>> origin/userDB
+id=175dfdc9ada1c587828c4a12dffc48ed31806a676bd

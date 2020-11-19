@@ -1,31 +1,53 @@
 package com.codecool.flight_api_project.user;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import java.util.Set;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
+    @Column(name = "name")
+    private String name;
+
+    @NotBlank
+    @Column(name = "username")
     private String username;
-    private String password;
+
+    @NotBlank
+    @Column(name = "email")
     private String email;
 
+    @NotBlank
+    @Column(name = "password")
+    private String password;
 
-    public User(String username, String password, String email) {
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<UserRole> role;
+
+
+    public User(@NotBlank String name, @NotBlank String username, @NotBlank String email, @NotBlank String password) {
+        this.name = name;
         this.username = username;
-        this.password = password;
         this.email = email;
+        this.password = password;
     }
 
-    public User() {}
+    public User() {
+    }
 
     public Long getId() {
         return id;
@@ -33,6 +55,14 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getUsername() {
@@ -57,5 +87,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Set<UserRole> getRoles() {
+        return role;
+    }
+
+    public void setRole(Set<UserRole> role) {
+        this.role = role;
     }
 }
