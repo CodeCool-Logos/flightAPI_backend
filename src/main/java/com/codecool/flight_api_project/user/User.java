@@ -1,10 +1,10 @@
 package com.codecool.flight_api_project.user;
 
 
-import com.codecool.flight_api_project.security.AppUserRoles;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "name")
     private String name;
@@ -26,7 +26,11 @@ public class User {
     private String password;
     @Column(name = "email")
     private String email;
-    @Column(name = "role")
-    private AppUserRoles userRole;
 
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<UserRole> role;
 }

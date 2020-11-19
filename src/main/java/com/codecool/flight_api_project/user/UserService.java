@@ -1,15 +1,16 @@
 package com.codecool.flight_api_project.user;
 
 
-import com.codecool.flight_api_project.security.AppUserRoles;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpSession;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
 @Service
 @AllArgsConstructor
@@ -17,8 +18,11 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
+    @Autowired
+    UserRoleRepository roleRepository;
 
-    public User getUserByUsername(String username) {
+
+    public Optional<User> getUserByUsername(String username) {
         return userRepository.getByUsername(username);
     }
 
@@ -26,10 +30,32 @@ public class UserService {
 
     public User getUserByEmail(String email) {return userRepository.getByEmail(email);}
 
-    public ResponseEntity<String> register (RegisterRequest request) {
-        ResponseEntity<String> validation = validateRegister(request);
+    public ResponseEntity<?> register (RegisterRequest request) {
+        ResponseEntity<?> validation = validateRegister(request);
         if (validation.getStatusCode().equals(HttpStatus.OK)) {
             User newUser = createUser(request);
+            Set<String> strRoles = request.getRoles();
+            Set<UserRole> roles = new HashSet<>();
+
+            if (strRoles == null) {
+                UserRole userRole = roleRepository.findByName(UserRoleEnum.ROLE_USER)
+                        .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                roles.add(userRole);
+            } else {
+                strRoles.forEach(role -> {
+                    if ("admin".equals(role)) {
+                        UserRole adminRole = roleRepository.findByName(UserRoleEnum.ROLE_ADMIN)
+                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                        roles.add(adminRole);
+                    } else {
+                        UserRole userRole = roleRepository.findByName(UserRoleEnum.ROLE_USER)
+                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                        roles.add(userRole);
+                    }
+                });
+            }
+            newUser.setRole(roles);
+
             userRepository.save(newUser);
         }
         return validation;
@@ -42,20 +68,20 @@ public class UserService {
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setName(request.getName());
-        user.setUserRole(AppUserRoles.ADMIN);
+
+
+
         return user;
     }
 
 
-
-    private ResponseEntity<String> validateRegister (RegisterRequest request) {
-        User userName = getUserByUsername(request.getUsername());
+    private ResponseEntity<?> validateRegister(RegisterRequest request) {
+        Optional<User> userName = getUserByUsername(request.getUsername());
         User email = getUserByEmail(request.getEmail());
-        if (userName != null) {
+        if (userRepository.existsByUsername(request.getUsername())) {
             return new ResponseEntity<>("Username already in use", HttpStatus.INTERNAL_SERVER_ERROR);
-
         }
-        if (email != null) {
+        if (userRepository.existsByEmail(request.getEmail())) {
             return new ResponseEntity<>("Email already in use", HttpStatus.INTERNAL_SERVER_ERROR);
 
         }
@@ -67,30 +93,26 @@ public class UserService {
 
 
 
-    public ResponseEntity<String> login(LoginRequest request, HttpSession session) {
-        ResponseEntity<String> validation = validateLogin(request);
-        if (validation.getStatusCode().equals(HttpStatus.OK)) {
-            User user = getUserByUsername(request.getUsername());
-            session.setAttribute("user", user);
-        }
-        return validation;
-    }
-
-    private ResponseEntity<String> validateLogin (LoginRequest request) {
-        User user = getUserByUsername(request.getUsername());
-        String message = "Wrong details";
-        if (user== null) {
-            return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-            return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-        return new ResponseEntity<>("Loged in", HttpStatus.OK);
-    }
-
-
-
-
+//    public ResponseEntity<String> login(LoginRequest request, HttpSession session) {
+//        ResponseEntity<String> validation = validateLogin(request);
+//        if (validation.getStatusCode().equals(HttpStatus.OK)) {
+//            User user = getUserByUsername(request.getUsername());
+//            session.setAttribute("user", user);
+//        }
+//        return validation;
+//    }
+//
+//    private ResponseEntity<String> validateLogin (LoginRequest request) {
+//        User user = getUserByUsername(request.getUsername());
+//        String message = "Wrong details";
+//        if (user== null) {
+//            return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+//            return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//        return new ResponseEntity<>("Loged in", HttpStatus.OK);
+//    }
 
 
 }
