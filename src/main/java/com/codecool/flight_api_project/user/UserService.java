@@ -93,26 +93,5 @@ public class UserService {
 
 
 
-//    public ResponseEntity<String> login(LoginRequest request, HttpSession session) {
-//        ResponseEntity<String> validation = validateLogin(request);
-//        if (validation.getStatusCode().equals(HttpStatus.OK)) {
-//            User user = getUserByUsername(request.getUsername());
-//            session.setAttribute("user", user);
-//        }
-//        return validation;
-//    }
-//
-//    private ResponseEntity<String> validateLogin (LoginRequest request) {
-//        User user = getUserByUsername(request.getUsername());
-//        String message = "Wrong details";
-//        if (user== null) {
-//            return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-//            return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//        return new ResponseEntity<>("Loged in", HttpStatus.OK);
-//    }
-
 
 }

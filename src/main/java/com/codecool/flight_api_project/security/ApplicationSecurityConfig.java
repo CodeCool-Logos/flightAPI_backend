@@ -27,8 +27,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(
-        // securedEnabled = true,
-        // jsr250Enabled = true,
         prePostEnabled = true)
 public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -72,7 +70,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                     .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                     .authorizeRequests()
                     .antMatchers("/users/**").permitAll()
-                    .antMatchers("/h2/**").permitAll()
+                    .antMatchers("/h2/**", "/swagger-ui/#/**").permitAll()
                     .antMatchers(HttpMethod.POST, "/api/v1/flights").hasRole("ADMIN")
                     .antMatchers(HttpMethod.DELETE, "/api/v1/flights/{id}").hasRole("ADMIN")
                     .antMatchers(HttpMethod.PUT, "/api/v1/flights/{id}").hasRole("ADMIN")
