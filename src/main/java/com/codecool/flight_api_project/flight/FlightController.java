@@ -52,7 +52,7 @@ public class FlightController
     public ResponseEntity<String> deleteFlightById(
             @PathVariable("id") final Long id){
         flightService.deleteFlightById(id);
-        return new ResponseEntity<>("Succes", HttpStatus.OK);
+        return new ResponseEntity<>("Success", HttpStatus.OK);
     }
 
 
