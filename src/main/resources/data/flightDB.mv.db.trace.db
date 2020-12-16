@@ -1,0 +1,78 @@
+2020-12-15 16:37:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+select user0_.id as id1_6_, user0_.email as email2_6_, user0_.name as name3_6_, user0_.password as password4_6_, user0_.username as username5_6_ from user user0_ where user0_.username=? [42102-200]
+2020-12-15 16:37:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+select user0_.id as id1_6_, user0_.email as email2_6_, user0_.name as name3_6_, user0_.password as password4_6_, user0_.username as username5_6_ from user user0_ where user0_.username=? [42102-200]
+2020-12-15 16:37:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+select user0_.id as id1_6_, user0_.email as email2_6_, user0_.name as name3_6_, user0_.password as password4_6_, user0_.username as username5_6_ from user user0_ where user0_.username=? [42102-200]
+2020-12-15 16:37:43 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+select user0_.id as id1_6_, user0_.email as email2_6_, user0_.name as name3_6_, user0_.password as password4_6_, user0_.username as username5_6_ from user user0_ where user0_.username=? [42102-200]
+2020-12-15 16:38:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+select user0_.id as id1_6_, user0_.email as email2_6_, user0_.name as name3_6_, user0_.password as password4_6_, user0_.username as username5_6_ from user user0_ where user0_.username=? [42102-200]
+2020-12-15 16:38:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+select user0_.id as id1_6_, user0_.email as email2_6_, user0_.name as name3_6_, user0_.password as password4_6_, user0_.username as username5_6_ from user user0_ where user0_.username=? [42102-200]
+2020-12-15 16:38:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+select user0_.id as id1_6_, user0_.email as email2_6_, user0_.name as name3_6_, user0_.password as password4_6_, user0_.username as username5_6_ from user user0_ where user0_.username=? [42102-200]
+2020-12-15 16:40:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+select user0_.id as id1_6_, user0_.email as email2_6_, user0_.name as name3_6_, user0_.password as password4_6_, user0_.username as username5_6_ from user user0_ where user0_.username=? [42102-200]
+2020-12-15 16:42:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+select user0_.id as id1_6_, user0_.email as email2_6_, user0_.name as name3_6_, user0_.password as password4_6_, user0_.username as username5_6_ from user user0_ where user0_.username=? [42102-200]
+2020-12-15 16:42:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+select user0_.id as id1_6_, user0_.email as email2_6_, user0_.name as name3_6_, user0_.password as password4_6_, user0_.username as username5_6_ from user user0_ where user0_.username=? [42102-200]
+2020-12-15 16:42:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+select user0_.id as id1_6_, user0_.email as email2_6_, user0_.name as name3_6_, user0_.password as password4_6_, user0_.username as username5_6_ from user user0_ where user0_.username=? [42102-200]
+2020-12-15 16:42:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+select user0_.id as id1_6_, user0_.email as email2_6_, user0_.name as name3_6_, user0_.password as password4_6_, user0_.username as username5_6_ from user user0_ where user0_.username=? [42102-200]
+2020-12-15 16:42:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+select user0_.id as id1_6_, user0_.email as email2_6_, user0_.name as name3_6_, user0_.password as password4_6_, user0_.username as username5_6_ from user user0_ where user0_.username=? [42102-200]
+2020-12-15 16:44:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+select user0_.id as id1_6_, user0_.email as email2_6_, user0_.name as name3_6_, user0_.password as password4_6_, user0_.username as username5_6_ from user user0_ where user0_.username=? [42102-200]
+2020-12-15 16:44:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+select user0_.id as id1_6_, user0_.email as email2_6_, user0_.name as name3_6_, user0_.password as password4_6_, user0_.username as username5_6_ from user user0_ where user0_.username=? [42102-200]
+2020-12-15 16:48:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+select user0_.id as id1_6_, user0_.email as email2_6_, user0_.name as name3_6_, user0_.password as password4_6_, user0_.username as username5_6_ from user user0_ where user0_.username=? [42102-200]
+2020-12-15 16:48:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+select user0_.id as id1_6_, user0_.email as email2_6_, user0_.name as name3_6_, user0_.password as password4_6_, user0_.username as username5_6_ from user user0_ where user0_.username=? [42102-200]
+2020-12-15 16:48:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+select user0_.id as id1_6_, user0_.email as email2_6_, user0_.name as name3_6_, user0_.password as password4_6_, user0_.username as username5_6_ from user user0_ where user0_.username=? [42102-200]
+2020-12-15 16:49:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+select user0_.id as id1_6_, user0_.email as email2_6_, user0_.name as name3_6_, user0_.password as password4_6_, user0_.username as username5_6_ from user user0_ where user0_.username=? [42102-200]
+2020-12-15 16:49:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+select user0_.id as id1_6_, user0_.email as email2_6_, user0_.name as name3_6_, user0_.password as password4_6_, user0_.username as username5_6_ from user user0_ where user0_.username=? [42102-200]
+2020-12-15 16:49:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+select user0_.id as id1_6_, user0_.email as email2_6_, user0_.name as name3_6_, user0_.password as password4_6_, user0_.username as username5_6_ from user user0_ where user0_.username=? [42102-200]
+2020-12-15 16:51:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+select user0_.id as id1_6_, user0_.email as email2_6_, user0_.name as name3_6_, user0_.password as password4_6_, user0_.username as username5_6_ from user user0_ where user0_.username=? [42102-200]
+2020-12-15 16:53:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+select user0_.id as id1_6_, user0_.email as email2_6_, user0_.name as name3_6_, user0_.password as password4_6_, user0_.username as username5_6_ from user user0_ where user0_.username=? [42102-200]
+2020-12-15 16:53:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+select user0_.id as id1_6_, user0_.email as email2_6_, user0_.name as name3_6_, user0_.password as password4_6_, user0_.username as username5_6_ from user user0_ where user0_.username=? [42102-200]
+2020-12-15 16:53:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+select user0_.id as id1_6_, user0_.email as email2_6_, user0_.name as name3_6_, user0_.password as password4_6_, user0_.username as username5_6_ from user user0_ where user0_.username=? [42102-200]
+2020-12-15 17:12:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+select user0_.id as id1_6_, user0_.email as email2_6_, user0_.name as name3_6_, user0_.password as password4_6_, user0_.username as username5_6_ from user user0_ where user0_.username=? [42102-200]
