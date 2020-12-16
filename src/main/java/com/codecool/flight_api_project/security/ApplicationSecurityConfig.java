@@ -70,10 +70,12 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                     .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                     .authorizeRequests()
                     .antMatchers("/users/**").permitAll()
+
                     .antMatchers("/h2/**", "/swagger-ui/#/**").permitAll()
 
                     .antMatchers(HttpMethod.GET,"/api/v1/flights/**").permitAll()
                     .antMatchers(HttpMethod.POST, "/api/v1/flights").hasRole("ADMIN")
+                    .antMatchers(HttpMethod.GET, "/api/v1/flights").hasRole("ADMIN")
                     .antMatchers(HttpMethod.DELETE, "/api/v1/flights/{id}").hasRole("ADMIN")
                     .antMatchers(HttpMethod.PUT, "/api/v1/flights/{id}").hasRole("ADMIN")
 

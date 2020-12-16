@@ -5,6 +5,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,6 +40,14 @@ public class AirportController {
         return airportRepository.getAirportByIataCode(iata_code);
     }
 
+    @GetMapping(path="/names", produces = MediaType.APPLICATION_JSON_VALUE)
+    List<String> getAirportsNames() {
+        List<String> airportNames = new ArrayList<>();
+        for (Airport airport : airportRepository.findAll()) {
+            airportNames.add(airport.getAirportName());
+        }
+        return airportNames;
+    }
 
 
     @PostMapping(
