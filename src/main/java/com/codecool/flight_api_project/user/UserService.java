@@ -69,8 +69,6 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setName(request.getName());
 
-
-
         return user;
     }
 
@@ -85,13 +83,10 @@ public class UserService {
             return new ResponseEntity<>("Email already in use", HttpStatus.INTERNAL_SERVER_ERROR);
 
         }
-        if (!request.getPassword().equals(request.getConfirmPassword())) {
-            return new ResponseEntity<>("Password don't match", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+//        if (!request.getPassword().equals(request.getConfirmPassword())) {
+//            return new ResponseEntity<>("Password don't match", HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
         return new ResponseEntity<>("Registration successful", HttpStatus.OK);
     }
-
-
-
 
 }

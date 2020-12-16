@@ -29,14 +29,15 @@ public class FlightController
     }
 
 
-//    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-//    public List<Flight> getAllFlights(){
-//        return flightRepository.findAll();
-//    }
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Flight> getAllFlights(){
+        return flightRepository.findAll();
+    }
 
     @GetMapping(
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Flight> getFlightByParams(@RequestParam("from") String from, @RequestParam("to") String to, @RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date){
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            path = "/{from}/{to}/{date}")
+    public List<Flight> getFlightByParams(@PathVariable("from") String from, @PathVariable("to") String to, @PathVariable("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date){
         return flightRepository.getFlightByParams(from , to, date);
     }
 

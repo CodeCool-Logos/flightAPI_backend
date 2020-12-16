@@ -11,6 +11,7 @@ import java.util.Set;
 @Setter
 @Getter
 public class RegisterRequest {
-    private String username,name, email, password, confirmPassword;
+    private String username,name, email, password;
+//            confirmPassword;
     private Set<String> roles;
 }
