@@ -71,7 +71,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                     .authorizeRequests()
                     .antMatchers("/users/**").permitAll()
 
-                    .antMatchers("/h2/**", "/swagger-ui/#/**").permitAll()
+                    .antMatchers("/h2-console/**", "/swagger-ui/#/**").permitAll()
 
                     .antMatchers(HttpMethod.GET,"/api/v1/flights/**").permitAll()
                     .antMatchers(HttpMethod.POST, "/api/v1/flights").hasRole("ADMIN")
@@ -101,7 +101,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers(HttpMethod.DELETE, "/api/v1/airlines/{id}").hasRole("ADMIN")
                     .antMatchers(HttpMethod.PUT, "/api/v1/airlines/{id}").hasRole("ADMIN")
 
-            .anyRequest().denyAll();
+            .anyRequest().permitAll();
 
             http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
             }
