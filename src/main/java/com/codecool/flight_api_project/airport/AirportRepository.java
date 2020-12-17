@@ -1,33 +1,27 @@
 package com.codecool.flight_api_project.airport;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
+
 @Repository
-public class AirportRepository {
+public interface AirportRepository extends JpaRepository<Airport, Long>
+{
 
 
-    private static List<Airport> DB = new ArrayList<>();
+    @Query(value = "select * from Airport ", nativeQuery =true)
+    List<Airport> getAllAirports();
+
+    @Query(value = "SELECT AIRPORT_NAME FROM Airport", nativeQuery = true)
+    List<String> getAllAirportsNames();
+
+    @Query(value = "select * from AIRPORT where AIRPORT_IATA_CODE = UPPER(:iata_code)", nativeQuery = true)
+    Airport getAirportByIataCode(@Param("iata_code") String iata_code);
 
 
-    public void populatedAirportsList() throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        DB = objectMapper.readValue(
-                new File("src/main/resources/airports.json"),
-                new TypeReference<List<Airport>>(){});
-    }
-
-    public void insertAirport(Airport airport) {
-        DB.add(airport);
-    }
 
 
-    public List<Airport> selectAllAirports() {
-        return DB;
-    }
 }

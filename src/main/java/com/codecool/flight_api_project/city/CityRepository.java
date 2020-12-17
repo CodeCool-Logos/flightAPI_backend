@@ -1,36 +1,12 @@
 package com.codecool.flight_api_project.city;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 @Repository
-public class CityRepository implements CityDAO{
-
-    public CityRepository(){};
-
-    private static List<CityModel> DB = new ArrayList<>();
-
-
-    public void populatedCitiesList() throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        DB = objectMapper.readValue(
-                new File("src/main/resources/cities.json"),
-                new TypeReference<List<CityModel>>(){});
-    }
-
-
-    public void insertCity(CityModel city) {
-        DB.add(city);
-    }
-
-
-    @Override
-    public List<CityModel> selectAllCities() {
-        return DB;
-    }
+public interface CityRepository extends JpaRepository<City, Long>
+{
+    @Query(value = "insert into CITY(CITY_NAME) values (:nameCity)", nativeQuery = true)
+    void addNewCity(@Param("nameCity") String nameCity);
 }

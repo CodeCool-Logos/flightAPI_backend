@@ -1,26 +1,14 @@
 package com.codecool.flight_api_project.airline;
 
+public interface AirlineService {
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-import java.util.List;
+    Airline saveAirline(Airline airline);
 
-@Service
-public class AirlineService {
+    void deleteAirlineById(Long id);
 
-    @Autowired
-    private final AirlineRepository airlineRepository;
+    Airline updateAirlineById(Long id,Airline airlineToUpdate);
 
-    public AirlineService(AirlineRepository airlineRepository) {
-        this.airlineRepository = airlineRepository;
-    }
 
-    public void addAirline(AirlineModel airlineModel) {
-        airlineRepository.insertAirline(airlineModel);
-    }
 
-    public List<AirlineModel> allAirlines(){
-        return airlineRepository.selectAllAirline();
-    }
 }

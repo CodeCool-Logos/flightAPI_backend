@@ -1,28 +1,13 @@
 package com.codecool.flight_api_project.city;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.codecool.flight_api_project.airline.Airline;
 
-@Service
-public class CityService{
+public interface CityService {
 
-    @Autowired
-    private final CityRepository cityRepository;
+    City saveCity(City city);
 
-    public CityService(CityRepository cityRepository)
-    {
-        this.cityRepository = cityRepository;
-    }
+    void deleteCityById(Long id);
 
+    City updateCityById(Long id,City cityToUpdate);
 
-    public void addCity(CityModel cityModel)
-    {
-        cityRepository.insertCity(cityModel);
-    }
-
-    public  List<CityModel> allCities()
-    {
-        return cityRepository.selectAllCities();
-    }
 }
