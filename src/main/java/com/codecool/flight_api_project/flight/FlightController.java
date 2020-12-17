@@ -34,6 +34,11 @@ public class FlightController
         return flightRepository.findAll();
     }
 
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, path="/{id}")
+    public Optional<Flight> getFlightById(@PathVariable("id")Long id){
+        return flightRepository.findById(id);
+    }
+
     @GetMapping(
             produces = MediaType.APPLICATION_JSON_VALUE,
             path = "/{from}/{to}/{date}")
@@ -55,13 +60,6 @@ public class FlightController
         return new ResponseEntity<>("Success", HttpStatus.OK);
     }
 
-
-
-    @GetMapping(path = "/{id}",
-                produces = MediaType.APPLICATION_JSON_VALUE)
-    public Optional<Flight> getFlightBy(@PathVariable Long id){
-        return flightRepository.findById(id);
-    }
 
 
     @PutMapping("/{id}")

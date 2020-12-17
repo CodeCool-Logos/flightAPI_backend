@@ -9,33 +9,31 @@ import java.util.List;
 
 
 @Entity
+@Table(name = "cart")
 public class Cart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = 'flight_id')
+    @Column(name = "cart_id")
     private Long id;
 
     @OneToOne
-    @Column(name = 'user_Id')
+    @JoinColumn(name = "user_Id")
     private User userId;
 
-    @OneToMany
-    @Column(name = 'flights')
-    private List<Flight> flightList = new ArrayList<>();
-
-
-
+    @OneToOne
+    @JoinColumn(name = "flight_id")
+    private Flight flight;
 
 
     public Cart() {
 
     }
 
-    public Cart(Long id, User userId, List<Flight> flightList) {
+    public Cart(Long id, User userId,Flight flight ) {
         this.id = id;
         this.userId = userId;
-        this.flightList = flightList;
+        this.flight=flight;
     }
 
     public Long getId() {
@@ -46,7 +44,7 @@ public class Cart {
         return userId;
     }
 
-    public List<Flight> getFlightList() {
-        return flightList;
+    public Flight getFlight() {
+        return flight;
     }
 }
