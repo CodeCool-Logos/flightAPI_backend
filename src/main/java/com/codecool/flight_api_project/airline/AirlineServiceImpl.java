@@ -4,6 +4,8 @@ package com.codecool.flight_api_project.airline;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AirlineServiceImpl implements AirlineService{
 
@@ -28,6 +30,18 @@ public class AirlineServiceImpl implements AirlineService{
         airline.setIso(airlineToUpdate.getIso());
         airline.setName(airlineToUpdate.getName());
         return airlineRepository.save(airline);
+    }
+
+    @Override
+    public List<Airline> getAllAirlines() {
+        List<Airline> airlines = airlineRepository.findAll();
+        return airlines;
+    }
+
+    @Override
+    public Airline getAirlineById(Long id) {
+        Airline airline = airlineRepository.getOne(id);
+        return airline;
     }
 
 }

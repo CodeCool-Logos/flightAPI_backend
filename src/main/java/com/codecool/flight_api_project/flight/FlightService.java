@@ -1,5 +1,9 @@
 package com.codecool.flight_api_project.flight;
 
+import java.time.LocalDate;
+import java.util.List;
+
+
 public interface FlightService {
 
     Flight saveFlight(Flight flight);
@@ -7,5 +11,7 @@ public interface FlightService {
     void deleteFlightById(Long id);
 
     Flight updateFlightById(Long id, Flight flight);
+
+    List<Flight> getFlightByParams(String from, String to, LocalDate date);
 
 }

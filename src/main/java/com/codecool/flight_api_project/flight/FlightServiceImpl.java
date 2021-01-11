@@ -3,6 +3,9 @@ package com.codecool.flight_api_project.flight;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.List;
+
 
 @Service
 public class FlightServiceImpl implements FlightService{
@@ -28,5 +31,10 @@ public class FlightServiceImpl implements FlightService{
         flight.setPrice(flightToUpdate.getPrice());
         flight.setDepartureDate(flightToUpdate.getDepartureDate());
         return flightRepository.save(flight);
+    }
+
+    @Override
+    public List<Flight> getFlightByParams(String from, String to, LocalDate date) {
+        return flightRepository.getFlightByParams(from, to, date);
     }
 }
