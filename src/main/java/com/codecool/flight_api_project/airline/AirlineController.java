@@ -35,7 +35,7 @@ public class AirlineController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletePlanetById(
+    public ResponseEntity<String> deleteAirlineById(
             @PathVariable("id") final Long id) {
         airlineService.deleteAirlineById(id);
         return new ResponseEntity<>("Success", HttpStatus.OK);
@@ -49,14 +49,3 @@ public class AirlineController {
                 = airlineService.updateAirlineById(id, airlineToUpdate);
         return new ResponseEntity<>(updatedAirline, HttpStatus.OK);
     }
-
-//    @PutMapping("/{name}")
-//    public ResponseEntity<Airline> updateAirlineByName(
-//            @PathVariable("name") final String name,
-//            @RequestBody final Airline airlineToUpdate) {
-//        Airline updatedAirline
-//                = airlineService.updateAirlineById(id, airlineToUpdate);
-//        return new ResponseEntity<>(updatedAirline, HttpStatus.OK);
-//    }
-
-}
