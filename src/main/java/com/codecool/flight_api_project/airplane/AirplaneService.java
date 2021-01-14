@@ -1,8 +1,14 @@
 package com.codecool.flight_api_project.airplane;
 
+import java.util.List;
+
 public interface AirplaneService {
 
-    Airplane saveAirplane(Airplane airplane);
+    List<Airplane> getAllAirplanes();
+
+    Airplane getAirplaneById(Long id);
+
+    Airplane addAirplane(Airplane airplane);
 
     void deleteAirplaneByID(Long id);
 

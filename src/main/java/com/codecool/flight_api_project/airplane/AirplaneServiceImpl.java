@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Repository
 public class AirplaneServiceImpl implements AirplaneService {
@@ -13,8 +15,15 @@ public class AirplaneServiceImpl implements AirplaneService {
     private AirplaneRepository airplaneRepository;
 
     @Override
-    public Airplane saveAirplane(Airplane airplane) {
+    public Airplane addAirplane(Airplane airplane) {
         return airplaneRepository.save(airplane);
+    }
+
+    public List<Airplane> getAllAirplanes() { return airplaneRepository.findAll(); }
+
+    @Override
+    public Airplane getAirplaneById(Long id) {
+        return airplaneRepository.findById(id);
     }
 
     @Override

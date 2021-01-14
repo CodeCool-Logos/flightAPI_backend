@@ -17,19 +17,19 @@ public class AirlineController {
     private AirlineService airlineService;
 
     @Autowired
-    private final AirlineRepository airlineRepository ;
+    private final AirlineRepository airlineRepository;
 
     public AirlineController(AirlineRepository airlineRepository) {
         this.airlineRepository = airlineRepository;
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    List<Airline> getAirlines(){
+    List<Airline> getAirlines() {
         return airlineRepository.findAll();
     }
 
     @PostMapping()
-    public ResponseEntity<Airline> addAirline(@RequestBody final Airline airline){
+    public ResponseEntity<Airline> addAirline(@RequestBody final Airline airline) {
         Airline savedAirline = airlineService.saveAirline(airline);
         return new ResponseEntity<>(savedAirline, HttpStatus.CREATED);
     }
@@ -49,3 +49,4 @@ public class AirlineController {
                 = airlineService.updateAirlineById(id, airlineToUpdate);
         return new ResponseEntity<>(updatedAirline, HttpStatus.OK);
     }
+}
