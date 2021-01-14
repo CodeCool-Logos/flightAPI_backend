@@ -21,4 +21,6 @@ public interface FlightRepository extends JpaRepository<Flight, Long>
             ,nativeQuery = true)
     List<Flight> getFlightByParams(@RequestParam("from") String from, @RequestParam("to") String to
             , @RequestParam("date") LocalDate date);
+
+
 }

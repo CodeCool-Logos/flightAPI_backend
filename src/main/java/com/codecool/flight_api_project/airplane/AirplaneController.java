@@ -1,6 +1,4 @@
 package com.codecool.flight_api_project.airplane;
-import com.codecool.flight_api_project.city.City;
-import com.codecool.flight_api_project.flight.Flight;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -29,7 +27,7 @@ public class AirplaneController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    List<Airplane> getAirplane(){
+    List<Airplane> getAirplanes(){
         return airplaneRepository.findAll();
     }
 
@@ -41,8 +39,8 @@ public class AirplaneController {
 
     @PostMapping()
     public ResponseEntity<Airplane> addAirplane(@RequestBody final Airplane airplane){
-        Airplane savedAirplane = airplaneService.saveAirplane(airplane);
-        return new ResponseEntity<>(savedAirplane, HttpStatus.CREATED);
+        Airplane newAirplane = airplaneService.addAirplane(airplane);
+        return new ResponseEntity<>(newAirplane, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
