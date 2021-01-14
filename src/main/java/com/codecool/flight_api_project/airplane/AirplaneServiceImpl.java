@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Repository
@@ -22,7 +23,7 @@ public class AirplaneServiceImpl implements AirplaneService {
     public List<Airplane> getAllAirplanes() { return airplaneRepository.findAll(); }
 
     @Override
-    public Airplane getAirplaneById(Long id) {
+    public Optional<Airplane> getAirplaneById(Long id) {
         return airplaneRepository.findById(id);
     }
 
